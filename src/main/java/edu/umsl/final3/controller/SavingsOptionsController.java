@@ -61,11 +61,12 @@ public class SavingsOptionsController {
             model.addAttribute("balance",savingsAccount.printNumberAsCurrency(savingsAccount.getSavingsBalance()) );
             return "savings_balance";
         }
-        else
-        {
+        else if(savingsOption.equals("TRANSACTIONS")) {
             List<TransactionAsStrings> savingsTransactions= savingsAccount.formatTransactionList(savingsAccount.getSavingsTransactions());
             model.addAttribute("savingsTransactions",savingsTransactions) ;
             return "savings_transactions";
+        }else{
+                return "another_transaction";
         }
 
     }

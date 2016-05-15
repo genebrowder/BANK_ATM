@@ -144,6 +144,9 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
   <component name="dataSourceStorageLocal">
     <data-source name="hibernate.cfg.xml/Hibernate driver - sunny_days_atm@localhost" uuid="f8b42d92-cfa7-4829-a517-4f9cc729766e">
       <secret-storage>master_key</secret-storage>
