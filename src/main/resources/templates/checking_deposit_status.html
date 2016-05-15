@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <!-- CSS -->
+    <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/after_signin.css}" href="../static/css/after_signin.css" rel="stylesheet"  type="text/css"/>
+
+    <!-- JavaScript -->
+    <script th:src="@{/lib/jquery/jquery-2.2.1.min.js}" src="../static/lib/jquery/jquery-2.2.1.min.js" type="application/javascript"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <h1>Checking Deposit Status</h1>
+    </div>
+
+    <!--<form class="form-signin"  th:action="@{/checkings_or_savings}" th:object="${accountChoice}"  method="post"> -->
+
+    <!-- Example row of columns -->
+    <form class="form-signin" action="/checking_deposit_status" method="post">
+
+        <div class="row">
+            <div class="col-xs-4" >
+            <label class="sr-only">dateOfDeposit</label>
+            DATE:
+            </div>
+            <div class="col-xs-6"  align="left">
+                <input type="text" name="dateOfDeposit" th:value="${dateDepositAdded}"/>
+            </div>
+            <div class="col-xs-2"  />
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-4" >
+                <label class="sr-only">amountOfDeposit</label>
+                AMOUNT:
+            </div>
+            <div class="col-xs-6"  align="left">
+                <input type="text" name="amountOfDeposit" th:value="${depositAmount}"/>
+            </div>
+            <div class="col-xs-2"  />
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-4" >
+                <label class="sr-only">balance</label>
+                BALANCE:
+            </div>
+            <div class="col-xs-6"  align="left">
+                <input type="text" name="balance" th:value="${balance}"/>
+            </div>
+            <div class="col-xs-2"  />
+        </div>
+
+
+        <br/>
+
+
+        <div class="row">
+            <div class="col-xs-6"  />
+            <div class="col-xs-6"  align="left">
+                <input type="submit" name="action" value="CONTINUE"/>
+            </div>
+
+        </div>
+    </form>
+
+
+
+</div> <!-- /container -->
+
+
+</body>
+</html>

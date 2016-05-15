@@ -1,0 +1,160 @@
+Database Tables should be created in the order shown:
+USER
+USER_LOGIN_INFO
+ACCCOUNT
+TRANSACACTION
+
+
+show databases;
+
+create database sunny_days_atm;
+
+drop database sunny_days_atm;
+
+use sunny_days_atm;
+
+create table `user`(
+  `user_id` INT(11)     NOT NULL,
+  `last_name`      VARCHAR(30) NOT NULL,
+  `first_name`      VARCHAR(30) NOT NULL,
+  `city`      VARCHAR(30) NOT NULL,
+  `state`      VARCHAR(2) NOT NULL,
+  `zip_code`      VARCHAR(5) NOT NULL,
+  `phone_number`      VARCHAR(10),
+
+  PRIMARY KEY (`user_id`)
+) ;
+
+insert into user (user_id, last_name, first_name, city, state, zip_code, phone_number)
+values("1","B","A","Saint Louis","MO","63000","3141234567");
+insert into user (user_id, last_name, first_name, city, state, zip_code, phone_number)
+values("2","D","C","Saint Louis","MO","63000","3141234567");
+insert into user (user_id, last_name, first_name, city, state, zip_code, phone_number)
+values("3","F","E","Saint Louis","MO","63000","3141234567");
+insert into user (user_id, last_name, first_name, city, state, zip_code, phone_number)
+values("4","H","G","Saint Louis","MO","63000","3141234567");
+insert into user (user_id, last_name, first_name, city, state, zip_code, phone_number)
+values("5","J","I","Saint Louis","MO","63000","3141234567");
+
+drop table  user;
+
+select * from user;
+
+CREATE TABLE user_login_info
+(
+    user_login_info_id INT(11) AUTO_INCREMENT NOT NULL,
+    account_number VARCHAR(10) NOT NULL,
+    pin VARCHAR(4) NOT NULL,
+    user_id INT(11)     NOT NULL,
+
+    PRIMARY KEY (`user_login_info_id`)
+    FOREIGN KEY (`user_id`) REFERENCES user(`user_id`)
+);
+
+show tables;
+
+
+desc `user_log_info`;
+
+insert into user_login_info (account_number, pin, user_id)
+values("123456","4321","1")  ;
+insert into user_login_info(account_number, pin, user_id)
+values("234567","4321","2")  ;
+insert into user_login_info (account_number, pin, user_id)
+values("345678","4321","3")  ;
+insert into user_login_info (account_number, pin, user_id)
+values("456789","4321","4")  ;
+insert into user_login_info (account_number, pin, user_id)
+values("567890","4321","5")  ;
+
+select * from user_log_info;
+
+drop table  user_login_info;
+
+select *
+from user_login_info ul, user u
+where ul.user_id = u.user_id;
+
+
+create table `account`(
+  `account_id` INT(11)     NOT NULL AUTO_INCREMENT,
+  `user_id`  INT(11)       NOT NULL,
+  `account_number`      VARCHAR(10) NOT NULL,
+  `type_of_account_number`      VARCHAR(1) NOT NULL,
+  `type_of_account_name`      VARCHAR(15) NOT NULL,
+
+
+  PRIMARY KEY (`account_id`),
+  FOREIGN KEY (`user_id`) REFERENCES USER(`user_id`)
+) ;
+
+
+
+insert into account (user_id, account_number, type_of_account_number, type_of_account_name)
+values("1","100001","1","CHECKING");
+insert into account (user_id, account_number, type_of_account_number, type_of_account_name)
+values("1","100002","2","SAVINGS");
+insert into account (user_id, account_number, type_of_account_number, type_of_account_name)
+values("2","200001","1","CHECKING");
+insert into account (user_id, account_number, type_of_account_number, type_of_account_name)
+values("2","200002","2","SAVINGS");
+insert into account (user_id, account_number, type_of_account_number, type_of_account_name)
+values("3","300001","1","CHECKING");
+insert into account (user_id, account_number, type_of_account_number, type_of_account_name)
+values("3","300002","2","SAVINGS");
+insert into account (user_id, account_number, type_of_account_number, type_of_account_name)
+values("4","400001","1","CHECKING");
+insert into account (user_id, account_number, type_of_account_number, type_of_account_name)
+values("4","400002","2","SAVINGS");
+insert into account (user_id, account_number, type_of_account_number, type_of_account_name)
+values("5","500001","1","CHECKING");
+insert into account (user_id, account_number, type_of_account_number, type_of_account_name)
+values("5","500002","2","SAVINGS");
+
+select * from account;
+
+drop table  account;
+
+select *
+from user_login_info ul, user u, account a
+where ul.user_id = u.user_id
+and a.user_id=u.user_id;
+
+
+
+create table `transaction`(
+  `transaction_id` INT(11)     NOT NULL AUTO_INCREMENT,
+  `account_id`  INT(11)         NOT NULL,
+  `type_of_transaction`      VARCHAR(10) NOT NULL,
+  `date_of_transaction`        DATE  NOT NULL,
+  `balance`                   DECIMAL(11,2) NOT NULL,
+  `amount`                    DECIMAL(11,2) NOT NULL,
+  PRIMARY KEY (`transaction_id`) ,
+  FOREIGN KEY (`account_id`) REFERENCES ACCOUNT(`account_id`)
+) ;
+
+
+insert into transaction (account_id, type_of_transaction, date_of_transaction, balance, amount)
+values("1","DEPOSIT",'2016-01-01',"100.00","100.00");
+insert into transaction (account_id, type_of_transaction, date_of_transaction, balance, amount)
+values("2","DEPOSIT",'2016-01-01',"100.00","100.00");
+insert into transaction (account_id, type_of_transaction, date_of_transaction, balance, amount)
+values("3","DEPOSIT",'2016-01-01',"100.00","100.00");
+insert into transaction (account_id, type_of_transaction, date_of_transaction, balance, amount)
+values("4","DEPOSIT",'2016-01-01',"100.00","100.00");
+insert into transaction (account_id, type_of_transaction, date_of_transaction, balance, amount)
+values("5","DEPOSIT",'2016-01-01',"100.00","100.00");
+insert into transaction (account_id, type_of_transaction, date_of_transaction, balance, amount)
+values("6","DEPOSIT",'2016-01-01',"100.00","100.00");
+insert into transaction (account_id, type_of_transaction, date_of_transaction, balance, amount)
+values("7","DEPOSIT",'2016-01-01',"100.00","100.00");
+insert into transaction (account_id, type_of_transaction, date_of_transaction, balance, amount)
+values("8","DEPOSIT",'2016-01-01',"100.00","100.00");
+insert into transaction (account_id, type_of_transaction, date_of_transaction, balance, amount)
+values("9","DEPOSIT",'2016-01-01',"100.00","100.00");
+insert into transaction (account_id, type_of_transaction, date_of_transaction, balance, amount)
+values("10","DEPOSIT",'2016-01-01',"100.00","100.00");
+
+desc transaction;
+
+drop table  transaction;

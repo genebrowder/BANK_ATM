@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Title</title>
+	<!-- CSS -->
+	<link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link th:href="@{/css/after_signin.css}" href="../static/css/after_signin.css" rel="stylesheet"  type="text/css"/>
+
+	<!-- JavaScript -->
+	<script th:src="@{/lib/jquery/jquery-2.2.1.min.js}" src="../static/lib/jquery/jquery-2.2.1.min.js" type="application/javascript"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="jumbotron">
+		<h1>Savings Options</h1>
+	</div>
+
+
+	<!-- Example row of columns -->
+	<form class="form-signin" action="/savings_options" method="post">
+
+		<div class="row">
+
+			<div class="col-xs-6"  >
+				<p>Make a Deposit</p>
+			</div>
+			<div class="col-xs-6" align="left">
+				<input type="submit" name="action" value="DEPOSIT"/>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-xs-6"  >
+				<p>Make a Withdrawal</p>
+			</div>
+			<div class="col-xs-6"  align="left">
+				<input type="submit" name="action" value="WITHDRAWAL"/>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-xs-6"  >
+				<p>Check Balance</p>
+			</div>
+			<div class="col-xs-6"  align="left">
+				<input type="submit" name="action" value="BALANCE"/>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-xs-6"  >
+				<p>Check Transactions</p>
+			</div>
+			<div class="col-xs-6"  align="left">
+				<input type="submit" name="action" value="TRANSACTIONS"/>
+			</div>
+
+		</div>
+	</form>
+
+
+
+</div> <!-- /container -->
+
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Title</title>
+<!-- CSS -->
+<link th:href="@{/lib/bootstrap/css/bootstrap.min.css}"
+	href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+<link th:href="@{/css/index.css}" href="../static/css/signin.css"
+	rel="stylesheet" type="text/css" />
+
+<!-- JavaScript -->
+<script th:src="@{/lib/jquery/jquery-2.2.1.min.js}"
+	src="../static/lib/jquery/jquery-2.2.1.min.js"
+	type="application/javascript"></script>
+
+</head>
+<body>
+
+
+
+	<div class="container">
+
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<table border="1" style="width: 100%; background-color: #ED8F24">
+				<tr>
+					<td><h1 style="color: white; font-size: 500%">Welcome to
+							Sunny Days Bank ATM</h1></td>
+				</tr>
+			</table>
+			<p>
+			<div class="btn">Savings for a Sunny Day</div>
+			</p>
+		</div>
+
+
+		<div>
+
+			<form class="form-signin" action="#" th:action="@{/index}"
+				th:object="${userLoginInfo}" method="post">
+				<table border="1" style="width: 100%; background-color: #ED8F24">
+					<tr><td><h2 style="color: white"><center>Please
+								sign in</center></h2>
+						</td>
+					</tr>
+				</table>
+
+				<label class="sr-only">Account</label> <input type="text"
+					th:id="accountNumber" th:field="*{accountNumber}"
+					class="form-control" placeholder="Account" required="required" />
+				<label class="sr-only">Pin</label> <input type="password"
+					th:id="pin" th:field="*{pin}" class="form-control"
+					placeholder="Pin" required="required" />
+
+				<button class="btn btn-lg btn-primary btn-block" type="submit"
+					value="Submit">Sign in</button>
+			</form>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

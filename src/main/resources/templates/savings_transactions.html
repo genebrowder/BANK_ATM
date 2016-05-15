@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <!-- CSS -->
+    <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" href="../static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/after_signin.css}" href="../static/css/after_signin.css" rel="stylesheet"  type="text/css"/>
+
+    <!-- JavaScript -->
+    <script th:src="@{/lib/jquery/jquery-2.2.1.min.js}" src="../static/lib/jquery/jquery-2.2.1.min.js" type="application/javascript"></script>
+
+</head>
+<body>
+<div class="container">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <h1>Savings Transactions</h1>
+    </div>
+
+    <!--<form class="form-signin"  th:action="@{/checkings_or_savings}" th:object="${accountChoice}"  method="post"> -->
+
+    <!-- Example row of columns -->
+    <form class="form-signin" action="/savings_transactions" method="post">
+        <!--/*@thymesVar id="checkingTransactions" type=""*/-->
+        <li th:each="transaction : ${savingsTransactions}">
+            <p th:inline="text">
+                [[${transaction.getTypeOfTransaction()}]]
+                [[${transaction.getDateOfTranaction()}]]
+                [[${transaction.getAmount()}]]
+                [[${transaction.getBalance()}]]
+            </p>
+        </li>
+        <br/>
+        <div class="row">
+            <!-- <p th:text=" 'firstName:     ' +  ${firstName}" />
+            <p th:text=" 'lastName:     ' +  ${lastName}" />
+            First Name: <input type="text" th:value="${firstName}"/> <br/>  -->
+            <div class="col-xs-6"  />
+            <div class="col-xs-6" align="left">
+                <input type="submit" name="action" value="CONTINUE"/>
+            </div>
+        </div>
+    </form>
+
+
+
+</div> <!-- /container -->
+
+
+</body>
+</html>
